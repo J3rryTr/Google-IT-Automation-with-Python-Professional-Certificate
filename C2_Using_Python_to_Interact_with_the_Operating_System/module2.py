@@ -1,8 +1,47 @@
-import re
+import csv
+import os
 
-# Regex examples
-# r”\d{3}-\d{3}-\d{4}”  This line of code matches U.S. phone numbers in the format 111-222-3333.
-# r”^-?\d*(\.\d+)?$”  This line of code matches any positive or negative number, with or without decimal places.
-# r”^[a-zA-Z0-9_]*$”  This line of code matches any alphanumeric string that contains no spaces.
-# r”/^(.+)/([^/]+)$/” This line of code matches any path and filename.
 
+
+
+#with open('employee_file.csv') as file:
+#    employee_file = csv.reader(file)
+
+# def new_directory(directory, filename):
+#   # Before creating a new directory, check to see if it already exists
+#   if os.path.isdir(directory) == False:
+#     os.mkdir(directory)
+
+#   # Create the new file inside of the new directory
+#   os.chdir(directory)
+
+def read_employees(csv_file_location):
+    csv.register_dialect('empDialect', skipinitialspace=True, strict=True)
+    employee_file = csv.DictReader(open(csv_file_location), dialect = 'empDialect')
+    employee_list = []
+    for data in employee_file:
+        employee_list.append(data)
+    return employee_list
+
+employee_list = read_employees('employee_file.csv')
+print(employee_list)
+
+def process_data(employee_list):
+    department_list = []
+    for employee_data in employee_list:
+        department_list.append(employee_data['Department'])
+    department_data = {}
+    for department_name in set(department_list):
+        department_data[department_name] = department_list.count(department_name)
+    return department_data
+
+dictionary = process_data(employee_list)
+print(dictionary)
+
+def write_report(dictionary, report_file):
+    with open(report_file, "w+") as f:
+        for k in sorted(dictionary):
+            f.write(str(k)+':'+str(dictionary[k])+'\n')
+    f.close()
+
+write_report(dictionary, 'report.txt')
