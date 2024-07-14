@@ -170,4 +170,102 @@ docs:
 
 ## Module 4
 ### Strings
+You can do this by using square brackets and the location, or index, of the character you want to access. It's important to remember that Python starts indexes at 0. So to access the first character in a string, you would use the index [0]. If you try to access an index that’s larger than the length of your string, you’ll get an **IndexError**. This is because you’re trying to access something that doesn't exist! You can also access indexes from the end of the string going towards the start of the string by using negative values. The index [-1] would access the last character of the string, and the index [-2] would access the second-to-last character. It's also access a portion of a string, called a slice or a substring. This allows you to access multiple characters of a string. You can do this by creating a range, using a colon as a separator between the start and end of the range, like [2:5]. For instance:
+
+This range is similar to the range() function we saw previously. It includes the first number, but goes to one less than the last number. For example:  
+> fruit = "Mangosteen"   
+> fruit[1:4]  
+'ang'
+
+The slice includes the character at index 1, and excludes the character at index 4. You can also easily reference a substring at the start or end of the string by only specifying one end of the range. For example, only giving the end of the range:
+>fruit[:5]   
+'Mango'
+
+This gave us the characters from the start of the string through index 4, excluding index 5. On the other hand this example gives is the characters including index 5, through the end of the string:
+> fruit[5:]   
+'steen'
+
+You might have noticed that if you put both of those results together, you get the original string back!
+> fruit[:5] + fruit[5:]   
+'Mangosteen'
+
+- Methods
+
+    If we aren't sure what the index of our typo is, we can use the string method *index* to locate it and return the index. Let's imagine we have the string **"lions tigers and bears"** in the variable animals. We can locate the index that contains the letter **g** using *animals.index("g")*, which will return the index; in this case 8. We can also use substrings to locate the index where the substring begins. animals.index("bears") would return 17, since that’s the start of the substring. If there’s more than one match for a substring, the index method will return the first match. If we try to locate a substring that doesn't exist in the string, we’ll receive a **ValueError** explaining that the substring was not found.
+
+- Advance
+    + The string method **lower** will return the string with all characters changed to lowercase. The inverse of this is the **upper** method, which will return the string all in uppercase. Just like with previous methods, we call these on a string using dot notation, like **"this is a string".upper()**. This would return the string **"THIS IS A STRING"**. This can be super handy when checking user input, since someone might type in all lowercase, all uppercase, or even a mixture of cases.
+    + You can use the **strip** method to remove surrounding whitespace from a string. Whitespace includes spaces, tabs, and newline characters. You can also use the methods  **lstrip** and **rstrip** to remove whitespace only from the left or the right side of the string, respectively.
+    + The method **count** can be used to return the number of times a substring appears in a string.
+    + If you wanted to check if a string ends with a given substring, you can use the method **endswith**. This will return True if the substring is found at the end of the string, and False if not.
+    + The **isnumeric** method can check if a string is composed of only numbers. If the string contains only numbers, this method will return True. We can use this to check if a string contains numbers before passing the string to the **int()** function to convert it to an integer, avoiding an error. Useful!
+    + Use the **join** method to concatenate strings. This method is called on a string that will be used to join a list of strings. The inverse of the join method is the **split** method which allowing us to split a string into a list of strings.
+
+- Formatting  
+    Use the **format** method on strings to concatenate and format strings in all kinds of powerful ways. To do this, create a string containing curly brackets, **{}**, as a placeholder, to be replaced. Then call the format method on the string using .format() and pass variables as parameters.
+
+- String reference guide
+    + String operations
+        + len(string) - Returns the length of the string
+        + for character in string - Iterates over each character in the string
+        + if substring in string - Checks whether the substring is part of the string 
+        + string[i] - Accesses the character at index i of the string, starting at zero
+        + string[i:j] - Accesses the substring starting at index i, ending at index j minus 1. If i is omitted, its value defaults to 0. If j is omitted, the value will default to len(string).
+
+    + String methods
+        + string.lower() - Returns a copy of the string with all lowercase characters
+        + string.upper() - Returns a copy of the string with all uppercase characters
+        + string.lstrip() - Returns a copy of the string with the left-side whitespace removed
+        + string.rstrip() - Returns a copy of the string with the right-side whitespace removed
+        + string.strip() - Returns a copy of the string with both the left and right-side whitespace removed
+        + string.count(substring) - Returns the number of times substring is present in the string
+        + string.isnumeric() - Returns True if there are only numeric characters in the string. If not, returns False.
+        + string.isalpha() - Returns True if there are only alphabetic characters in the string. If not, returns False.
+        + string.split() - Returns a list of substrings that were separated by whitespace (whitespace can be a space, tab, or new line)
+        + string.split(delimiter) - Returns a list of substrings that were separated by whitespace or a delimiter
+        + string.replace(old, new) - Returns a new string where all occurrences of old have been replaced by new.
+        + delimiter.join(list of strings) - Returns a new string with all the strings joined by the delimiter 
+
+- Formatting Strings Guide 
+    + Formatting expression:
+
+    | Expr | Meaning | Example |
+    | -------- | -------- | -------- |
+    |{:d}| integer value|'{:d}'.format(10.5) → '10'|
+    |{:.2f}|floating point with that many decimals|'{:.2f}'.format(0.5) → '0.50'|
+    |{:.2s}|string with that many characters|'{:.2s}'.format('Python') → 'Py'|
+    |{:<6s}|string aligned to the left that many spaces|'{:<6s}'.format('Py') → 'Py'|
+    |{:>6s}|string aligned to the right that many spaces|'{:>6s}'.format('Py') → 'Py'|
+    |{:^6s}|string centered in that many spaces|'{:^6s}'.format('Py') → 'Py'|
+
+- Formatted string literals (Optional)   
+Example:
+> name = "Micah"  
+> print(f'Hello {name}')  
+Hello Micah
+
+- Knowledge  
+    **String Operations and Methods**
+    - .format() - String method that can be used to concatenate and format strings. 
+        + {:.2f} - Within the .format() method, limits a floating point variable to 2 decimal places. The number of decimal places can be customized.
+
+    - len(string) - String operation that returns the length of the string.
+
+    - string[x] - String operation that accesses the character at index [x] of the string, where indexing starts at zero.
+
+    - string[x:y] - String operation that accesses a substring starting at index [x] and ending at index [y-1]. If x is omitted, its value defaults to 0. If y is omitted, the value will default to len(string).
+
+    - string.replace(old, new) - String method that returns a new string where all occurrences of an old substring have been replaced by a new substring.
+
+    - string.lower() - String method that returns a copy of the string with all lowercase characters.
+
+
+### Lists
+
+
+
+
+
+
+
 
