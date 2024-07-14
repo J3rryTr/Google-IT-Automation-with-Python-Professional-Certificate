@@ -67,7 +67,8 @@ The order of operations are to be calculated from left to right in the following
 ### Function
 Example:
 >def area_triangle(base, height):   
-...    (return base*height)/2   
+>>...    (return base*height)/2   
+
 >area_a=area_triangle(5,4)   
 >area_b=area_triangle(7,3)   
 >sum=area_a+area_b   
