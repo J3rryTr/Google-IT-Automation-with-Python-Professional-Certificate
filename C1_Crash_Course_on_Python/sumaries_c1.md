@@ -261,11 +261,121 @@ Hello Micah
 
 
 ### Lists
+- Modify Lists
+    - Add elements to the end of a list using the **append** method. You call this method on a list using dot notation, and pass in the element to be added as a parameter. For example, **list.append("New data")** would add the string "New data" to the end of the list called list.
+    - Add an element to a list in a specific position, you can use the method **insert**. The method takes two parameters: the first specifies the index in the list, and the second is the element to be added to the list. So **list.insert(0, "New data")** would add the string "New data" to the front of the list. This wouldn't overwrite the existing element at the start of the list. It would just shift all the other elements by one. If you specify an index that’s larger than the length of the list, the element will simply be added to the end of the list.
+    - Remove elements from the list using the **remove** method. This method takes an element as a parameter, and removes the first occurrence of the element. If the element isn’t found in the list, you’ll get a **ValueError** error explaining that the element was not found in the list.
+    - You can also remove elements from a list using the **pop** method. This method differs from the remove method in that it takes an index as a parameter, and returns the element that was removed. This can be useful if you don't know what the value is, but you know where it’s located. This can also be useful when you need to access the data and also want to remove it from the list.
+
+- **Tuples**: Strings are sequences of characters, and are immutable. Lists are sequences of elements of any data type, and are mutable. The third sequence type is the tuple. Tuples are like lists, since they can contain elements of any data type. But unlike lists, tuples are immutable. They’re specified using parentheses instead of square brackets.
+
+- **Iterating Over Lists Using Enumerate**: When we covered for *loops*, we showed the example of iterating over a list. This lets you iterate over each element in the list, exposing the element to the for loop as a variable. But what if you want to access the elements in a list, along with the index of the element in question? You can do this using the **enumerate()** function. The *enumerate()* function takes a list as a parameter and returns a tuple for each element in the list. The first value of the tuple is the index and the second value is the element itself.
 
 
+- Study Guide: Lists Operations and Methods
+
+Common sequence operations      
+
+Lists and tuples are both sequences and they share a number of sequence operations. The following common sequence operations are used by both lists and tuples:
+
+**len(sequence)** - Returns the length of the sequence.
+
+**for element in sequence** - Iterates over each element in the sequence.
+
+**if element in sequence** - Checks whether the element is part of the sequence.
+
+**sequence[x]** - Accesses the element at index [x] of the sequence, starting at zero
+
+**sequence[x:y]** - Accesses a slice starting at index [x], ending at index [y-1]. If [x] is omitted, the index will start at 0 by default. If [y] is omitted, the len(sequence) will set the ending index position by default.
+
+**for index, element in enumerate(sequence)** - Iterates over both the indices and the elements in the sequence at the same time.
 
 
+List-specific operations and methods    
+One major difference between lists and tuples is that lists are mutable (changeable) and tuples are immutable (not changeable). There are a few operations and methods that are specific to changing data within lists:
+
+**list[index] = x** - Replaces the element at index [n] with x.
+
+**list.append(x)** - Appends x to the end of the list.
+
+**list.insert(index, x)** - Inserts x at index position [index].
+
+**list.pop(index)** - Returns the element at [index] and removes it from the list. If [index] position is not in the list, the last element in the list is returned and removed.
+
+**list.remove(x)** - Removes the first occurrence of x in the list.
+
+**list.sort()** - Sorts the items in the list.
+
+**list.reverse()** - Reverses the order of items of the list.
+
+**list.clear()** - Deletes all items in the list.
+
+**list.copy()** - Creates a copy of the list.
+
+**list.extend(other_list)** - Appends all the elements of other_list at the end of list
+
+List comprehensions     
+A list comprehension is an efficient method for creating a new list from a sequence or a range in a single line of code. It is a best practice to add descriptive comments about any list comprehensions used in your code, as their purpose can be difficult to interpret by other coders.
+
+**[expression for variable in sequence]** - Creates a new list based on the given sequence. Each element in the new list is the result of the given expression.
+
+- Example: my_list = [ x*2 for x in range(1,11) ]
+
+**[expression for variable in sequence if condition]** - Creates a new list based on a specified sequence. Each element is the result of the given expression; elements are added only if the specified condition is true. 
+
+- Example: my_list = [ x for x in range(1,101) if x % 10 == 0 ]
 
 
+### Dictionaries
+
+When creating a dictionary, you use curly brackets: **{}**. When storing values in a dictionary, the key is specified first, followed by the corresponding value, separated by a colon. For example, **animals = { "bears":10, "lions":1, "tigers":2 }** creates a dictionary with three key value pairs, stored in the variable animals.
 
 
+- **Iterating Over Dictionaries**: *dictionary.items()*. This method returns a tuple for each element in the dictionary, where the first element in the tuple is the key and the second is the value. If you only wanted to access the keys in a dictionary, you could use the **keys()** method on the dictionary: *dictionary.keys()*. If you only wanted the values, you could use the **values()** method: *dictionary.values()*.
+
+- **Study Guide: Dictionary Methods**: 
+
+Operations  
+    
+**len(dictionary)** - Returns the number of items in a dictionary.  
+**for key, in dictionary** - Iterates over each key in a dictionary.    
+**for key, value in dictionary.items()** - Iterates over each key,value pair in a dictionary.   
+**if key in dictionary** - Checks whether a key is in a dictionary.     
+**dictionary[key]** - Accesses a value using the associated key from a dictionary.      
+**dictionary[key]** = value - Sets a value associated with a key.       
+**del dictionary[key]** - Removes a value using the associated key from a dictionary.
+
+Methods     
+**dictionary.get(key, default)** - Returns the value corresponding to a key, or the default value if the specified key is not present.      
+**dictionary.keys()** - Returns a sequence containing the keys in a dictionary.     
+**dictionary.values()** - Returns a sequence containing the values in a dictionary.     
+**dictionary[key].append(value)** - Appends a new value for an existing key.    
+**dictionary.update(other_dictionary)** - Updates a dictionary with the items from another dictionary. Existing entries are updated; new entries are added.     
+**dictionary.clear()** - Deletes all items from a dictionary.       
+**dictionary.copy()** - Makes a copy of a dictionary.
+
+Dictionaries versus Lists   
+Dictionaries are similar to lists, but there are a few differences:
+
+Both dictionaries and lists:
+- are used to organize elements into collections;
+- are used to initialize a new dictionary or list, use empty brackets;
+- can iterate through the items or elements in the collection; and
+- can use a variety of methods and operations to create and change the collections, like removing and inserting items or elements.
+
+Dictionaries only:
+- are unordered sets;
+- have keys that can be a variety of data types, including strings, integers, floats, tuples;.
+- can access dictionary values by keys;
+- use square brackets inside curly brackets { [ ] };
+- use colons between the key and the value(s); 
+- use commas to separate each key group and each value within a key group;
+- make it quicker and easier for a Python interpreter to find specific elements, as compared to a list.
+
+
+Lists only:
+- are ordered sets;
+- access list elements by index positions;
+- require that these indices be integers;
+- use square brackets [ ];
+- use commas to separate each list element.
