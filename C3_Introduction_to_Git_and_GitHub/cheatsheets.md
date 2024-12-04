@@ -13,7 +13,7 @@
 - commit --amend: easy change commit, overwrite the previous commit
 - revert: undo
 - clone: clone from git to local
-- clone https://<nameuser><your_token>@github.com/username/repo.git : clone uses with your token
+- clone https://nameuser<your_token>@github.com/username/repo.git : clone uses with your token
 
 ## Branching and Merging
 - branch <name_branch>: create branch  
