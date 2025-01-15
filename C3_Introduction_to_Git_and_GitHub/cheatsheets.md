@@ -115,3 +115,8 @@ pull request: A commit or series of commits that you seng to the owner of the re
 
 ## Reference
 - https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/about-pull-request-merges
+
+## ERROR FIX
+Error updating changes: detected dubious ownership in repository at 'PATH' 'PATH' is owned by: ADMIN (S-1-5-32-544) but the current user is: USER (S-1-5-21-2720734790-633595889-680327981-8224)
+--> takeown /f D:/ICMS/backend /r /d y
+
